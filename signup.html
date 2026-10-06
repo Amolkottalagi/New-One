@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sign up · SQL assistant</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="auth.css">
+</head>
+<body>
+<div class="auth">
+  <aside class="intro">
+    <div class="brand">SQL assistant</div>
+    <div>
+      <h2>Ask in plain English. Read the SQL.</h2>
+      <div class="demo">
+        <p class="demo-q">How many orders are in each status?</p>
+<pre class="demo-sql"><span class="k">SELECT</span> status, <span class="k">COUNT</span>(*) <span class="k">AS</span> orders
+<span class="k">FROM</span> orders
+<span class="k">GROUP BY</span> status
+<span class="k">ORDER BY</span> orders <span class="k">DESC</span>;</pre>
+      </div>
+    </div>
+    <div class="foot">Every answer shows the query behind it, so you can check it.</div>
+  </aside>
+
+  <main class="form-side">
+    <div class="card">
+      <h1>Create your account</h1>
+      <p class="sub"></p>
+
+      <div id="banner" class="banner" hidden></div>
+
+      <form data-form="signup" novalidate>
+        <div class="field">
+          <label for="name">Name</label>
+          <input id="name" name="name" type="text" autocomplete="name" aria-describedby="name-error" autofocus>
+          <p class="field-error" id="name-error"></p>
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" autocomplete="email" inputmode="email" aria-describedby="email-error">
+          <p class="field-error" id="email-error"></p>
+        </div>
+        <div class="field">
+          <label for="password">Password</label>
+          <div class="input-wrap">
+            <input id="password" name="password" type="password" autocomplete="new-password" aria-describedby="password-hint password-error">
+            <button type="button" class="toggle-pw" data-target="password" aria-pressed="false" aria-label="Show password">Show</button>
+          </div>
+          <p class="hint" id="password-hint">At least 8 characters, with a letter and a number.</p>
+          <p class="field-error" id="password-error"></p>
+        </div>
+        <div class="field">
+          <label for="confirm">Confirm password</label>
+          <div class="input-wrap">
+            <input id="confirm" name="confirm" type="password" autocomplete="new-password" aria-describedby="confirm-error">
+            <button type="button" class="toggle-pw" data-target="confirm" aria-pressed="false" aria-label="Show password">Show</button>
+          </div>
+          <p class="field-error" id="confirm-error"></p>
+        </div>
+        <button type="submit" class="submit">Create account</button>
+      </form>
+
+      <p class="switch">Already have an account? <a href="login.html">Log in</a></p>
+      <p class="mode-note" id="modeNote" hidden></p>
+    </div>
+  </main>
+</div>
+<script src="auth.js"></script>
+</body>
+</html>
