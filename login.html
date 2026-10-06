@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Log in · SQL assistant</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="auth.css">
+</head>
+<body>
+<div class="auth">
+  <aside class="intro">
+    <div class="brand">SQL assistant</div>
+    <div>
+      <h2>Ask in plain English. Read the SQL.</h2>
+      <div class="demo">
+        <p class="demo-q">Which customers spent the most this year?</p>
+<pre class="demo-sql"><span class="k">SELECT</span> c.name, <span class="k">SUM</span>(o.amount) <span class="k">AS</span> total_spent
+<span class="k">FROM</span> customers c
+<span class="k">JOIN</span> orders o <span class="k">ON</span> o.customer_id = c.id
+<span class="k">WHERE</span> o.status = <span class="s">'paid'</span>
+<span class="k">GROUP BY</span> c.name
+<span class="k">ORDER BY</span> total_spent <span class="k">DESC</span>
+<span class="k">LIMIT</span> <span class="n">5</span>;</pre>
+      </div>
+    </div>
+    <div class="foot">Every answer shows the query behind it, so you can check it.</div>
+  </aside>
+
+  <main class="form-side">
+    <div class="card">
+      <h1>Log in</h1>
+      <p class="sub">Welcome back. Enter your details to continue.</p>
+
+      <div id="banner" class="banner" hidden></div>
+
+      <form data-form="login" novalidate>
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" autocomplete="email" inputmode="email" aria-describedby="email-error" autofocus>
+          <p class="field-error" id="email-error"></p>
+        </div>
+        <div class="field">
+          <label for="password">Password</label>
+          <div class="input-wrap">
+            <input id="password" name="password" type="password" autocomplete="current-password" aria-describedby="password-error">
+            <button type="button" class="toggle-pw" data-target="password" aria-pressed="false" aria-label="Show password">Show</button>
+          </div>
+          <p class="field-error" id="password-error"></p>
+        </div>
+        <button type="submit" class="submit">Log in</button>
+      </form>
+
+      <p class="switch">New here? <a href="signup.html">Create an account</a></p>
+      <p class="mode-note" id="modeNote" hidden></p>
+    </div>
+  </main>
+</div>
+<script src="auth.js"></script>
+</body>
+</html>
